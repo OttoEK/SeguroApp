@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">seguroapp</string>
+    <string name="hint_patente">Patente</string>
+    <string name="hint_marca">Marca</string>
+    <string name="hint_modelo">Modelo</string>
+    <string name="hint_anho">Año</string>
+    <string name="hint_valoruf">Valor UF</string>
+    <string name="boton_calcular">Calcular</string>
+    <string name="boton_volver">Volver</string>
+    <string name="hint_valorseguro">Valor Seguro</string>
+</resources>
