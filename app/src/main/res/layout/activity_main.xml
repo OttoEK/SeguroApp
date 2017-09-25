@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="inacap.otto.seguroapp.MainActivity"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    >
 
     <!--Debe	capturar: Patente,	Marca,	Modelo,	Año	y	valor	de	la	UF-->
     <!--(Unidad	de	Fomento	para	el	día	de	ingreso).-->
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:padding="5dp"
+        android:gravity="center"
         />
 
     <EditText
@@ -24,7 +26,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/hint_patente"
-        android:inputType="text" />
+        android:inputType="text"
+        android:gravity="center"
+        />
 
     <TextView
         android:hint="@string/hint_marca"
@@ -32,55 +36,68 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:padding="5dp"
+        android:gravity="center"
         />
     <Spinner
         android:id="@+id/edt_marca"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></Spinner>
+        android:layout_height="wrap_content"
+        android:gravity="center"></Spinner>
 
     <TextView
         android:hint="@string/hint_modelo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:gravity="center"
+        />
     <EditText
         android:id="@+id/edt_modelo"
         android:inputType="text"
         android:hint="@string/hint_modelo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         />
     <TextView
         android:hint="@string/hint_anho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:gravity="center"
+        />
     <EditText
         android:id="@+id/edt_anho"
         android:inputType="number"
         android:hint="@string/hint_anho"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        />
     <TextView
         android:hint="@string/hint_valoruf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:gravity="center"
+        />
     <EditText
         android:id="@+id/edt_valoruf"
         android:inputType="numberDecimal"
         android:hint="@string/hint_valoruf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         />
     <Button
     android:id="@+id/btn_calcular"
     android:text="@string/boton_calcular"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+        android:gravity="center"
         />
 
 </LinearLayout>
