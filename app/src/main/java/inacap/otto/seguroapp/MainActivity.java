@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String ES_ASEGURABLE = "ES ASEGURABLE";
     public static final String NO_ES_ASEGURABLE = "NO ES ASEGURABLE";
+    public static final String SEGURO_APP_ASEGURATE = "Seguro App - Asegurate!";
     private EditText edtPatente;
     //private EditText edtMarca;
     private EditText edtModelo;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spnMarca.setOnItemSelectedListener(this);
 
         this.restaurarDatos();
-        setTitle("Seguro App - Asegurate!");
+        setTitle(SEGURO_APP_ASEGURATE);
     }
 
     private void restaurarDatos() {
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void calcularSeguro() {
 
-        if (!this.checkFields(edtPatente, edtModelo, edtAnho, edtValoruf)) {
+        if (!this.validarCampos(edtPatente, edtModelo, edtAnho, edtValoruf)) {
             return;
         } else if (Integer.parseInt(edtAnho.getText().toString())> Calendar.getInstance().get(Calendar.YEAR)) {
             Toast.makeText(this, "Año incorrecto", Toast.LENGTH_SHORT).show();
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
-    private boolean checkFields(EditText... args) {
+    private boolean validarCampos(EditText... args) {
         for (EditText editText : args) {
             if (editText.getText().toString().isEmpty()) {
                 Toast.makeText(this, editText.getHint() + " incorrecto", Toast.LENGTH_SHORT).show();
