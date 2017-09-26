@@ -12,7 +12,7 @@
         android:hint="@string/hint_patente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="5dp"
         android:gravity="center"
         />
@@ -27,7 +27,7 @@
         android:hint="@string/hint_marca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="5dp"
         android:gravity="center"
         />
@@ -42,7 +42,7 @@
         android:hint="@string/hint_modelo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="5dp"
         android:gravity="center"
         />
@@ -57,7 +57,7 @@
         android:hint="@string/hint_anho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="5dp"
         android:gravity="center"
         />
@@ -69,10 +69,25 @@
         android:gravity="center"
         />
     <TextView
+        android:hint="Antiguedad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:padding="5dp"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/txv_antiguedad"
+        android:hint="antiguedad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        />
+    <TextView
         android:hint="@string/hint_valoruf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="5dp"
         android:gravity="center"
         />
@@ -87,7 +102,7 @@
         android:hint="@string/hint_valorseguro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="5dp"
         android:gravity="center"
         />
@@ -103,7 +118,7 @@
         android:id="@+id/txv_esasegurable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:padding="5dp"
         android:gravity="center"
         />
@@ -111,14 +126,14 @@
         android:id="@+id/imv_resultado"
         android:layout_width="300px"
         android:layout_height="300px"
-        android:textSize="20sp"
+        android:textSize="18sp"
         />
     <Button
         android:id="@+id/btn_volver"
         android:text="@string/boton_volver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:gravity="center"
         />
 </LinearLayout>

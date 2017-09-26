@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.Calendar;
+
 public class ResultActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView txv_patente;
@@ -23,6 +25,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
     private TextView txv_valoruf;
     private ImageView imv_resultado;
     private Button btn_volver;
+    private TextView txv_antiguedad;
 
     Bundle bundle;
 
@@ -41,13 +44,17 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         txv_valorseguro = (TextView) findViewById(R.id.txv_valorseguro);
         imv_resultado = (ImageView) findViewById(R.id.imv_resultado);
         btn_volver = (Button) findViewById(R.id.btn_volver);
-
         btn_volver.setOnClickListener(this);
+        txv_antiguedad = (TextView) findViewById(R.id.txv_antiguedad);
 
         String patente = bundle.getString("patente");
         String marca = bundle.getString("marca");
         String modelo = bundle.getString("modelo");
         String anho = bundle.getString("anho");
+        Integer antiguedad = Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(anho);
+        if(antiguedad==0){
+            antiguedad = 1;
+        }
         Double valorUf = bundle.getDouble("valoruf");
         Double valorSeguro = bundle.getDouble("valorSeguro");
         String esAsegurable = bundle.getString("esAsegurable");
@@ -56,9 +63,10 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         txv_marca.setText(marca);
         txv_modelo.setText(modelo);
         txv_anho.setText(anho);
-        txv_valoruf.setText(valorUf.toString());
-        txv_valorseguro.setText(valorSeguro.toString());
+        txv_valoruf.setText("$"+valorUf.toString());
+        txv_valorseguro.setText("$"+valorSeguro.toString());
         txv_esasegurable.setText(esAsegurable);
+        txv_antiguedad.setText(antiguedad + " año(s)");
         if(esAsegurable.equals("ES ASEGURABLE")){
             imv_resultado.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.asegurado));
             Toast.makeText(getApplicationContext(), "ES ASEGURABLE", Toast.LENGTH_SHORT).show();

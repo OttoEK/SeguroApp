@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String validez = (antiguedad>10 ? NO_ES_ASEGURABLE : ES_ASEGURABLE);
         double valorSeguro = 0d;
         if(antiguedad<=10){
+            antiguedad = antiguedad<1?1:antiguedad;
             valorSeguro = 0.1* Double.parseDouble(edtValoruf.getText().toString()) *antiguedad;
         }
 
