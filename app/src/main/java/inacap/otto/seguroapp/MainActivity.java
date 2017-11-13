@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String marcaFabricante;
     ArrayList<String> listaMarcas = new ArrayList<String>();
 
-    private static final String URL_STRING = "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json";
+    private static final String URL_STRING = "https://raw.githubusercontent.com/OttoEK/OttoEK.github.io/master/automarcas.json";
 
 
     @Override
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //Efectuamos un recorrido de los datos y se incorporan a una lista
                     for (int i = 0; i < reader.length(); i++) {
                         objetoJSON          = reader.getJSONObject(i);
-                        marcaFabricante = objetoJSON.getString("NOMBREREGION");
+                        marcaFabricante = objetoJSON.getString("make_display");
                         listaMarcas.add(marcaFabricante);
 
 
