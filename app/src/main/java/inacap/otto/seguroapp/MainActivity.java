@@ -1,6 +1,7 @@
 package inacap.otto.seguroapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,6 +33,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnCalcular;
     private Spinner spnMarca;
     private ArrayAdapter adapter;
+    JSONObject objetoJSON;
+    String marcaFabricante;
+    ArrayList<String> listaMarcas = new ArrayList<String>();
+
+    private static final String URL_STRING = "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, listMarcas);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnMarca.setAdapter(adapter);
+        //spnMarca.setAdapter(adapter);
         spnMarca.setOnItemSelectedListener(this);
 
         this.restaurarDatos();
         setTitle(SEGURO_APP_ASEGURATE);
+
+        //A través del métdo execute ejecutamos ta tarea asíncrona
+        new ProcessJSON().execute(URL_STRING);
     }
 
     private void restaurarDatos() {
@@ -127,4 +141,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    //Sub Clase asíncrona que permite ejecutar la consulta de datos a un servidor remoto
+    private class ProcessJSON extends AsyncTask<String, Void, String> {
+        protected String doInBackground(String... strings){
+            String stream = null;
+            String urlString = strings[0];
+
+            HTTPDataHandler hh = new HTTPDataHandler();
+            stream = hh.GetHTTPData(urlString);
+
+            return stream;
+        }
+
+        protected void onPostExecute(String stream){
+
+            if(stream !=null){
+                try{
+
+                    //Obtenemos los datos recibidos desde el servidor remoto y los incorporamos a un objeto JSONArray
+                    JSONArray reader= new JSONArray(stream);
+
+                    //Efectuamos un recorrido de los datos y se incorporan a una lista
+                    for (int i = 0; i < reader.length(); i++) {
+                        objetoJSON          = reader.getJSONObject(i);
+                        marcaFabricante = objetoJSON.getString("NOMBREREGION");
+                        listaMarcas.add(marcaFabricante);
+
+
+                    }
+
+                    /*Una vez hecho el recorrido, se establece que la lista de regiones
+                    será la fuente para el adaptador del Spinner.
+                     */
+                    spnMarca.setAdapter(new ArrayAdapter<String>(MainActivity.this,
+                            android.R.layout.simple_spinner_dropdown_item, listaMarcas));
+
+
+
+
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
 }
+
+
